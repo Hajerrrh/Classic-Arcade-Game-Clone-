@@ -1,15 +1,19 @@
+//  invoke strict mode for the entire script
+'use strict';
 //Set the initial game's level to 1
 let level = 1;
 
 // Set the initial player's score to 0.
 let score = 0;
-document.getElementById('playerScore').innerHTML = score;
+let gameScore = document.getElementById('playerScore').innerHTML;
+gameScore = score;
 
 // Enemies our player must avoid
-var Enemy = function( x , y  ) {
+let Enemy = function( x , y , speed ) {
     // Variables applied to each of our instances go here,
     this.x = x;
     this.y = y;
+    this.speed = speed;
 
     // we've provided one for you to get started
 
@@ -25,16 +29,18 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     if (this.x < 505) {
-        this.x += (150 * dt);
+
+        this.x += (this.speed * dt);
     }
     else {this.x = -90;}
 
 	// If the enemy and the player collide
-    if(this.x < player.x + 30 && this.x + 60 > player.x && this.y < player.y + 60 && this.y + 40 > player.y) {
+  if( player.x >= this.x -40 && player.x <=this.x + 40 ){
+          if( player.y >= this.y -40 && player.y <=  this.y+40 ) {
 		//score = 0;
-		document.getElementById('playerScore').innerHTML = score;
+		gameScore = score;
 		player.reset();
-    }
+  }}
 
     // increment levels when the player reaches certain score
     if(  score >= 3){
@@ -46,16 +52,27 @@ Enemy.prototype.update = function(dt) {
      document.getElementById("level").innerHTML= level;
 
      // change number of Enemies+speed when player reaches a higher level
+     if( level === 1){
+       for(let i=0; i<allEnemies.length; i++){
+           allEnemies[i].speed=150;
+       }
+   }
      if (level === 2){
-     for(let i=0; i<allEnemies.length; i++){
+
                 allEnemies[4]= e5;
                 allEnemies[5]= e6;
-            }}
+                for(let i=0; i<allEnemies.length; i++){
+                    allEnemies[i].speed=200;
+                }
+            }
       if (level === 3){
-      for(let i=0; i<allEnemies.length; i++){
+
                 allEnemies[0]= e1;
                 allEnemies[1]= e2;
-            }}
+                for(let i=0; i<allEnemies.length; i++){
+                    allEnemies[i].speed=250;
+                }
+            }
 };
 // called when the enemy is reset to the starting point
 Enemy.prototype.reset = function(){
@@ -106,7 +123,7 @@ Player.prototype.update = function(){
   if (this.y < 0) {
     score++;
 	document.getElementById('playerScore').innerHTML = score;
-    player.reset();
+    this.reset();
     }
 
 };
@@ -118,14 +135,18 @@ Player.prototype.render = function() {
 
 // Let the player use the arrow keys to move
 Player.prototype.handleInput = function(arrow){
-    if( arrow === 'left' && this.x > 0 )
+    if( arrow === 'left' && this.x > 0 ){
         this.x = this.x - 20;
-    else if( arrow === 'right' && this.x < 400)
+      }
+    else if( arrow === 'right' && this.x < 400){
         this.x = this.x + 20;
-    else if( arrow === 'up' && this.y > -50)
+      }
+    else if( arrow === 'up' && this.y > -50){
         this.y = this.y - 20;
-    else if( arrow === 'down' && this.y < 400)
+        }
+    else if( arrow === 'down' && this.y < 400){
         this.y = this.y + 20;
+        }
 };
 
 // Now instantiate your objects.
@@ -136,14 +157,10 @@ let e3 = new Enemy(-290, 230);
 let e4 = new Enemy(-390, 140);
 let e5 = new Enemy(-490, 60);
 let e6 = new Enemy(-890, 230);
-let e7 = new Enemy(-590,140);
-let e8 = new Enemy(-690,60);
 
-
-//console.log(level);
 
 // Place all enemy objects in an array called allEnemies
-let allEnemies = [e3, e4, e5, e6, e7, e8] ;
+const allEnemies = [e3, e4, e5, e6] ;
 
 // Place the player object in a variable called player
 let player = new Player();
@@ -153,7 +170,7 @@ let player = new Player();
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
-    var allowedKeys = {
+    let allowedKeys = {
         37: 'left',
         38: 'up',
         39: 'right',
