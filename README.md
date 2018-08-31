@@ -21,6 +21,8 @@ Clone this project to your machine
 
 $ git clone https://github.com/Hajerrrh/FEND-Classic-Arcade-Game-Clone-.git
 
+or you can just visit https://hajerrrh.github.io/Classic-Arcade-Game-Clone-/ and play the game online!
+
 ## How to Run the Project
 Load the `index.html` in a web browser that supports HTML5.
 
