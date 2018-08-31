@@ -1,0 +1,17 @@
+body {
+    text-align: center;
+    background-image: url(../images/bg.jpg);
+}
+h1{
+  font-family: 'Baloo Tammudu', cursive;
+  color: YellowGreen;
+  font-size: 52px;
+  text-transform: uppercase;
+  line-height: 24px;
+}
+h2{
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  color: Tomato;
+  font-size: 28px;
+  font-weight: bold;
+}
