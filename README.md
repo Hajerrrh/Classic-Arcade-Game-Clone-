@@ -25,13 +25,13 @@ $ git clone https://github.com/Hajerrrh/FEND-Classic-Arcade-Game-Clone-.git
 Load the `index.html` in a web browser that supports HTML5.
 
 ## How to play the game
-In this game you have a Player and Enemies (Bugs).
-The goal of the player is to reach the water, without colliding into any one of the enemies,
+* In this game you have a Player and Enemies (Bugs).
+* The goal of the player is to reach the water, without colliding into any one of the enemies,
 And to successfully move to the next level.
-The player can move left, right, up and down.
-The enemies move in varying speeds, each level the speeds and the number of enemies increment.
-Once a the player collides with an enemy, the player moves back to the start square. 
-Once the player reaches the water, the player scores an additional point.
+* The player can move left, right, up and down.
+* The enemies move in varying speeds, each level the speeds and the number of enemies increment.
+* Once a the player collides with an enemy, the player moves back to the start square. 
+* Once the player reaches the water, the player scores an additional point.
 
 
 ## Extra features
