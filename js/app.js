@@ -159,7 +159,11 @@ let e3 = new Enemy(-290, 230);
 let e4 = new Enemy(-390, 140);
 let e5 = new Enemy(-490, 60);
 let e6 = new Enemy(-890, 230);
+let e7 = new Enemy(-590,140);
+let e8 = new Enemy(-690,60);
 
+
+//console.log(level);
 
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [e3, e4, e5, e6] ;
@@ -172,7 +176,7 @@ let player = new Player();
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
-    let allowedKeys = {
+    var allowedKeys = {
         37: 'left',
         38: 'up',
         39: 'right',
@@ -181,3 +185,4 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
